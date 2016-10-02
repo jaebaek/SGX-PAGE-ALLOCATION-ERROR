@@ -397,6 +397,29 @@ bool CMetadata::build_layout_table()
         layout.group.load_times = m_create_param.tcs_max_num-1;
         layouts.push_back(layout);
     }
+
+    //----> Jaebaek: code and data pages for the enclave program
+    // guard page
+    layouts.push_back(guard_page);
+
+    // .sgxcode
+    layout.entry.id = LAYOUT_ID_HEAP;
+    layout.entry.page_count = (uint32_t)(0x2000000 >> SE_PAGE_SHIFT);
+    layout.entry.attributes = ADD_PAGE_ONLY; // ADD_EXTEND_PAGE;
+    layout.entry.si_flags = SI_FLAGS_RW | SI_FLAG_X;
+    layouts.push_back(layout);
+
+    // guard page
+    layouts.push_back(guard_page);
+
+    // .sgxdata
+    layout.entry.id = LAYOUT_ID_HEAP;
+    layout.entry.page_count = (uint32_t)(0x2000000 >> SE_PAGE_SHIFT);
+    layout.entry.attributes = ADD_PAGE_ONLY; // ADD_EXTEND_PAGE;
+    layout.entry.si_flags = SI_FLAGS_RW;
+    layouts.push_back(layout);
+    //----<
+
    // build layout table
     if(false == build_layout_entries(layouts))
     {
@@ -666,4 +689,3 @@ bool update_metadata(const char *path, const metadata_t *metadata, uint64_t meta
     return write_data_to_file(path, std::ios::in | std::ios::binary| std::ios::out, 
         reinterpret_cast<uint8_t *>(const_cast<metadata_t *>( metadata)), metadata->size, (long)meta_offset);
 }
-

@@ -790,6 +790,8 @@ static int do_eadd(struct isgx_epc_page *secs_page,
 
 	pginfo.linaddr = linaddr;
 	pginfo.secinfo = (unsigned long) secinfo;
+    printk("linaddr = %lx, srcpge = %llx, secinfo.flags = %llx\n",
+            linaddr, pginfo.srcpge, secinfo->flags);
 	ret = __eadd(&pginfo, epc_page_vaddr);
 
 	isgx_put_epc_page(epc_page_vaddr);

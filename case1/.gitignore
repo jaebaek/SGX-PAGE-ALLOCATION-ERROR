@@ -1,0 +1,17 @@
+*
+!.gitignore
+!*.cpp
+!*.h
+!*.c
+!*.s
+!*.py
+!*.sh
+!*.xml
+!*.pem
+!*.lds
+!Makefile
+!README.txt
+!*.edl
+*_u.*
+*_t.*
+!*/

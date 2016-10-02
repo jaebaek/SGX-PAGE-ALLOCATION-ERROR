@@ -78,3 +78,16 @@ sdk/cpprt/linux/libunwind/src/x86_64/.dirstamp
 sdk/edger8r/linux/_build/
 sdk/sign_tool/SignTool/sgx_sign
 sdk/simulation/SEConfigureCPUSVN/linux/sgx_config_cpusvn
+
+psw/ae/aesm_service/aesm_service
+psw/ae/aesm_service/data/
+psw/ae/aesm_service/source/protobuf/messages.pb.cc
+psw/ae/aesm_service/source/protobuf/messages.pb.h
+psw/ae/aesm_service/source/protobuf/messages.proto
+
+linux/installer/common/psw/gen_source.py
+linux/installer/common/psw/output/
+linux/installer/common/sdk/gen_source.py
+linux/installer/common/sdk/output/
+linux/installer/common/sdk/pkgconfig/x64/
+tags

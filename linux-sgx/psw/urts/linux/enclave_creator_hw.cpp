@@ -155,6 +155,7 @@ int EnclaveCreatorHW::add_enclave_page(sgx_enclave_id_t enclave_id, void *src, u
 
     addp.addr = (unsigned long)enclave_id + (unsigned long)rva;
     addp.user_addr = reinterpret_cast<unsigned long>(source);
+    printf("addr = %lx, user_addr = %lx, flags = %lx\n", addp.addr, addp.user_addr, sinfo.flags);
     addp.secinfo = (void *)const_cast<sec_info_t *>(&sinfo);
     if(!((1<<DoEEXTEND) & attr))
         addp.flags |= ISGX_ADD_SKIP_EEXTEND;
