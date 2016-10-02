@@ -15,3 +15,6 @@
 *_u.*
 *_t.*
 !*/
+!result
+!out
+!kern.log
